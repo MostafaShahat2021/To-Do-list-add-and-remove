@@ -1,5 +1,5 @@
-/* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
 import './style.css';
 
 const input = document.getElementById('task');
@@ -15,8 +15,6 @@ if (localStorage.getItem('tasks')) {
 const addelemToPage = (tasks) => {
   tasksDiv.innerHTML = '';
   tasks.forEach((task, index) => {
-    // console.log(task);
-    // console.log(index);
     const div = document.createElement('div');
     div.className = 'task';
     div.setAttribute('data-id', task.id);
@@ -35,7 +33,6 @@ const getDataStorage = () => {
   const data = window.localStorage.getItem('tasks');
   if (data) {
     const tasks = JSON.parse(data);
-    // console.log(data);
     addelemToPage(tasks);
   }
 };
@@ -74,8 +71,6 @@ const addTask = (taskText) => {
   };
 
   tasks.push(task);
-  // console.log(tasks)
-  // add tasks to page
   addelemToPage(tasks);
   // Add tasks to localStorage
   addDataStorage(tasks);
