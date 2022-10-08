@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
 import './style.css';
 
@@ -39,31 +40,7 @@ const getDataStorage = () => {
   }
 };
 
-const addDataStorage = (tasks) => {
-  window.localStorage.setItem('tasks', JSON.stringify(tasks));
-};
-
-const deleteTaskWith = (taskId) => {
-  tasks = tasks.filter((task) => task.id !== taskId);
-  addDataStorage(tasks);
-};
-
 getDataStorage();
-
-const addTask = (taskText) => {
-  const task = {
-    id: Date.now(),
-    descripton: input.value,
-    completed: false,
-  };
-
-  tasks.push(task);
-  // console.log(tasks)
-  // add tasks to page
-  addelemToPage(tasks);
-  // Add tasks to localStorage
-  addDataStorage(tasks);
-};
 
 // add task
 submit.onclick = (e) => {
@@ -88,3 +65,27 @@ tasksDiv.addEventListener('click', (e) => {
     e.target.setAttribute('contenteditable', true);
   }
 });
+
+const addTask = (taskText) => {
+  const task = {
+    id: Date.now(),
+    descripton: input.value,
+    completed: false,
+  };
+
+  tasks.push(task);
+  // console.log(tasks)
+  // add tasks to page
+  addelemToPage(tasks);
+  // Add tasks to localStorage
+  addDataStorage(tasks);
+};
+
+const addDataStorage = (tasks) => {
+  window.localStorage.setItem('tasks', JSON.stringify(tasks));
+};
+
+const deleteTaskWith = (taskId) => {
+  tasks = tasks.filter((task) => task.id !== taskId);
+  addDataStorage(tasks);
+};
